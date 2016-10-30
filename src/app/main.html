@@ -1,0 +1,61 @@
+<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+    <div ng-cloak>
+        <md-toolbar class="md-tall">
+            <div layout="column" class="md-toolbar-tools-bottom inset">
+                <div layout="row">
+                    <div flex="80" style="margin-top: 10px;">
+                        <div>MENU</div>
+                    </div>
+                </div>
+            </div>
+        </md-toolbar>
+        <md-list>
+            <md-list-item>
+                <div class="inset">
+                    <ng-md-icon icon="apps"></ng-md-icon>
+                </div>
+                <p> Dashboard </p>
+            </md-list-item>
+        </md-list>
+    </div>
+</md-sidenav>
+<div layout="column" class="relative md-hue-1" layout-fill role="main" ng-controller="LayoutCtrl as layout" ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <md-button ng-click="layout.toggleSidenav('left')" hide-gt-md aria-label="Menu">
+                <ng-md-icon icon="menu"></ng-md-icon>
+            </md-button>
+            <img src="img/terres-mini.png" alt="terres" />
+            <span flex></span>
+            <md-menu>
+                <md-button aria-label="Open Settings" ng-click="layout.openMenu($mdOpenMenu, $event)">
+                    <ng-md-icon icon="account_circle"></ng-md-icon>
+                </md-button>
+                <md-menu-content width="4">
+                    <md-menu-item>
+                        <md-button ng-click="layout.changeProfile($event)">
+                            <ng-md-icon icon="person"></ng-md-icon>
+                            Profile
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-click="layout.changePassword()">
+                            <ng-md-icon icon="lock"></ng-md-icon>
+                            Password
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-divider></md-menu-divider>
+                    <md-menu-item>
+                        <md-button ng-click="layout.logOut()">
+                            <ng-md-icon icon="logout"></ng-md-icon>
+                            Logout
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </div>
+    </md-toolbar>
+    <md-content layout="column" flex md-scroll-y style="background-color:#DCDCDC">
+        <div ui-view></div>
+    </md-content>
+</div>

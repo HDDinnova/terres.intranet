@@ -1,0 +1,36 @@
+html, body, #root {
+  margin: 0;
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+  overflow: auto !important;
+}
+body, h1, h2, h3 {
+  font-weight: 300
+}
+md-toolbar:not(.md-hue-1), .md-fab {
+  fill: #fff;
+}
+md-sidenav {
+  fill: #737373;
+}
+.user-avatar {
+  border-radius: 99%;
+}
+md-toolbar.md-tall {
+  height: 64px;
+  max-height: 64px;
+  min-height: 64px;
+}
+code {
+  color: #4285f4;
+  -webkit-font-smoothing: auto;
+  font-weight: 300;
+  background-color: #F2F2F2;
+  padding: 10px;
+}
+.text-center {
+  text-align: center!important
+}
+ul {
+  list-style: none
+}
