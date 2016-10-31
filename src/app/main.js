@@ -5,7 +5,7 @@ angular
 
 function Intranet($scope, $window, $http) {
   var user = JSON.parse($window.sessionStorage.userInfo).id;
-  $http.post('api/main',user)
+  $http.post('api/main', user)
   .success(function (data) {
     console.log(data);
   });

@@ -44,7 +44,7 @@ Flight::route('/main', function(){
     $dades_tourism->bindParam(':user', $user['id']);
     $dades_tourism->execute();
     if ($dades_tourism->rowCount() === 0) {
-      $data['tourism'] = json_encode(null);
+      $data['tourism'] = null;
     } else {
       $tourism = $dades_tourism->fetch(PDO::FETCH_ASSOC);
       $data['tourism'] = $tourism;
@@ -54,10 +54,20 @@ Flight::route('/main', function(){
     $dades_documentary->bindParam(':user', $user['id']);
     $dades_documentary->execute();
     if ($dades_documentary->rowCount() === 0) {
-      $data['documentary'] = json_encode(null);
+      $data['documentary'] = null;
     } else {
       $documentary = $dades_documentary->fetch(PDO::FETCH_ASSOC);
       $data['documentary'] = $documentary;
+    }
+    $sql_corporate = "SELECT * FROM corporate WHERE user = :user LIMIT 1";
+    $dades_corporate = $db->prepare($sql_corporate);
+    $dades_corporate->bindParam(':user', $user['id']);
+    $dades_corporate->execute();
+    if ($dades_corporate->rowCount() === 0) {
+      $data['corporate'] = null;
+    } else {
+      $corporate = $dades_corporate->fetch(PDO::FETCH_ASSOC);
+      $data['corporate'] = $corporate;
     }
 
     Flight::json($data);
