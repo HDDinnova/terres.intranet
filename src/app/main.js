@@ -1,7 +1,15 @@
 angular
   .module('app')
-  .controller('IntraCtrl', function ($scope) {})
+  .controller('IntraCtrl', Intranet)
   .controller('LayoutCtrl', Layout);
+
+function Intranet($scope, $window, $http) {
+  var user = JSON.parse($window.sessionStorage.userInfo).id;
+  $http.post('api/main',user)
+  .success(function (data) {
+    console.log(data);
+  });
+}
 
 Layout.$inject = ['$mdSidenav', '$cookies', '$state', '$mdToast', '$mdDialog'];
 
