@@ -10,11 +10,35 @@
             </div>
         </md-toolbar>
         <md-list>
-            <md-list-item>
+            <md-list-item ui-sref="index.dashboard">
                 <div class="inset">
                     <ng-md-icon icon="apps"></ng-md-icon>
                 </div>
-                <p translate>{{'DASHBOARD'}}</p>
+                <p>{{'DASHBOARD' | translate}}</p>
+            </md-list-item>
+            <md-list-item ui-sref="index.tourfilm">
+                <div class="inset">
+                    <ng-md-icon icon="pool"></ng-md-icon>
+                </div>
+                <p>{{'TOURISMFILMS' | translate}}</p>
+            </md-list-item>
+            <md-list-item ui-sref="index.documentary">
+                <div class="inset">
+                    <ng-md-icon icon="lightbulb_outline"></ng-md-icon>
+                </div>
+                <p>{{'DOCFILMS' | translate}}</p>
+            </md-list-item>
+            <md-list-item ui-sref="index.corporate">
+                <div class="inset">
+                    <ng-md-icon icon="airport_shuttle"></ng-md-icon>
+                </div>
+                <p>{{'CORPFILMS' | translate}}</p>
+            </md-list-item>
+            <md-list-item ui-sref="index.payment">
+                <div class="inset">
+                    <ng-md-icon icon="local_atm"></ng-md-icon>
+                </div>
+                <p>{{'PAYMENT' | translate}}</p>
             </md-list-item>
         </md-list>
     </div>

@@ -1,0 +1,63 @@
+<md-content layout-padding layout-wrap ng-show="category">
+  <md-card ng-hide="films">
+    <md-card-content>
+      <h2 translate>{{'FILL_INITIAL_INFO'}}</h2>
+      <div>
+        <form name="corpfilms_form" ng-submit="saveFilm()">
+          <div ng-repeat="i in nfilms track by $index">
+            <div layout="row" flex="100">
+              <p flex="5">{{$index + 1}}</p>
+              <md-input-container flex="55">
+                <label>{{'FILM_TITLE' | translate}}</label>
+                <input type="text" ng-model="formdata.title[$index]" required="true">
+              </md-input-container>
+            </div>
+          </div>
+          <md-button class="md-raised" type="submit" aria-label="save">{{'SAVE' | translate}}</md-button>
+        </form>
+      </div>
+    </md-card-content>
+  </md-card>
+  <md-card ng-show="films">
+    <md-card-content>
+      <h2 translate>{{'REGISTERED_FILMS'}}</h2>
+      <div>
+        <md-list>
+          <md-list-item class="md-2-line" flex="100" ng-repeat="film in filmsinfo">
+            <h3 flex="50" ng-bind-html="film.title"></h3>
+            <span flex="50">
+              <img src="img/terres-mini.png" alt="terres" />
+            </span>
+          </md-list-item>
+        </md-list>
+      </div>
+      <div ng-show="rest">
+        <form name="tourfilms_form" ng-submit="saveFilm()">
+          <div ng-repeat="i in rest track by $index">
+            <div layout="row" flex="100">
+              <p flex="5">{{$index + 1}}</p>
+              <md-input-container flex="55">
+                <label>{{'FILM_TITLE' | translate}}</label>
+                <input type="text" ng-model="formdata.title[$index]" required="true">
+              </md-input-container>
+            </div>
+          </div>
+          <md-button class="md-raised" type="submit" aria-label="save">{{'SAVE' | translate}}</md-button>
+        </form>
+      </div>
+    </md-card-content>
+  </md-card>
+</md-content>
+<md-content layout-padding layout-wrap ng-hide="category">
+    <h2 translate>{{'CORPFILMS'}}</h2>
+    <p translate>
+      {{'STILL_NOT_REGISTER'}}
+    </p>
+    <form ng-submit="addFilm()">
+      <md-input-container>
+        <label translate>{{'FILMS2REGISTER'}}</label>
+        <input type="number" ng-model="form.nfilms">
+      </md-input-container>
+      <md-button class="md-raised" aria-label="add film" type="submit">{{'ADD' | translate}}</md-button>
+    </form>
+</md-content>

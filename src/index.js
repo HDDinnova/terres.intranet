@@ -1,5 +1,5 @@
 angular
-  .module('app', ['ui.router', 'ngAnimate', 'ngMaterial', 'ngResource', 'pascalprecht.translate', 'ngCookies', 'ngSanitize', 'ngMdIcons'])
+  .module('app', ['ui.router', 'ngAnimate', 'ngFileUpload', 'ngMaterial', 'ngResource', 'pascalprecht.translate', 'ngCookies', 'ngSanitize', 'ngMdIcons', 'md.data.table'])
   .config(function ($mdThemingProvider, $translateProvider) {
     $mdThemingProvider.theme('default')
       .primaryPalette('blue-grey', {
@@ -14,7 +14,7 @@ angular
         'ca_*': 'ca'
       })
       .determinePreferredLanguage()
-      .fallbackLanguage('en')
+      .fallbackLanguage('ca')
       .useLocalStorage()
       .useStaticFilesLoader({
         prefix: 'i18n/locale-',

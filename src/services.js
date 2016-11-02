@@ -30,7 +30,6 @@ function AuthenticationSvc($http, $q, $window) {
   }
 
   function init() {
-    $window.sessionStorage.userInfo = '{"status":200,"message":"Login successful","id":"am9yZGkucnVpenBAZ21haWwuY29t"}';
     if ($window.sessionStorage.userInfo) {
       userInfo = JSON.parse($window.sessionStorage.userInfo);
     }

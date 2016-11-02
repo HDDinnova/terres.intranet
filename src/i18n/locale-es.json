@@ -1,4 +1,22 @@
 {
-  "DASHBOARD": "Dashboard",
-  "WELCOME": "Welcome"
+  "DASHBOARD": "Panel",
+  "WELCOME": "Bienvenido/da",
+  "TOURISMFILMS": "Films turísticos",
+  "HAVEREGISTER": "Has registrado",
+  "DOCFILMS": "Documentales",
+  "CORPFILMS": "Films corporativos",
+  "PAYMENT": "Pago",
+  "FILL_INITIAL_INFO": "Películas a inscribir",
+  "FILM_TITLE": "Título de la película",
+  "SAVE": "Guardar",
+  "REGISTERED_FILMS": "Pel·lículas inscritas",
+  "STILL_NOT_REGISTER": "No has registrado ningún film en esta sección, ¿Quieres registrar alguno?",
+  "FILMS2REGISTER": "Número de films a registrar",
+  "ADD": "Añadir",
+  "PAYINFO": "Información de pago",
+  "PAYAMOUNT": "Total a pagar",
+  "VAT": "IVA si aplicable",
+  "PAYMENTPROOF": "Justificante de pago",
+  "PAYMENTSEND": "Pago enviado",
+  "PAYMENTSENDMSG": "Cuando confirmemos el pago podras descargar tu factura"
 }

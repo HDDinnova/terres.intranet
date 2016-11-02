@@ -1,4 +1,22 @@
 {
   "DASHBOARD": "Panell",
-  "WELCOME": "Benvingut/da"
+  "WELCOME": "Benvingut/da",
+  "TOURISMFILMS": "Films turístics",
+  "HAVEREGISTER": "Has registrat",
+  "DOCFILMS": "Documentals",
+  "CORPFILMS": "Films corporatius",
+  "PAYMENT": "Pagament",
+  "FILL_INITIAL_INFO": "Pel·lícules a inscriure",
+  "FILM_TITLE": "Títol de la pel·lícula",
+  "SAVE": "Guardar",
+  "REGISTERED_FILMS": "Pel·lícules inscrites",
+  "STILL_NOT_REGISTER": "No has registrat cap film a aquesta secció, en vols registrar algun?",
+  "FILMS2REGISTER": "Número de films a registrar",
+  "ADD": "Afegir",
+  "PAYINFO": "Informació de pagament",
+  "PAYAMOUNT": "Total a pagar",
+  "VAT": "IVA si aplicable",
+  "PAYMENTPROOF": "Justificant de pagament",
+  "PAYMENTSEND": "Pagament enviat",
+  "PAYMENTSENDMSG": "Quan confirmem el pagament podràs descarregar la factura"
 }

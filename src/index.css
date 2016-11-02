@@ -34,3 +34,6 @@ code {
 ul {
   list-style: none
 }
+.img_form_switch{
+  max-height: 40px;
+}

@@ -9,8 +9,8 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
   $stateProvider
     .state('index', {
       url: '/',
+      abstract: true,
       templateUrl: 'app/main.html',
-      controller: 'IntraCtrl',
       resolve: {
         auth: function ($q, AuthenticationSvc) {
           var userInfo = AuthenticationSvc.getUserInfo();
@@ -21,5 +21,31 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
           }
         }
       }
+    })
+    .state('index.dashboard', {
+      url: '',
+      templateUrl: 'app/dashboard.html',
+      controller: 'DashCtrl',
+      controllerAs: 'dash'
+    })
+    .state('index.tourfilm', {
+      url: '',
+      templateUrl: 'app/tourfilm.html',
+      controller: 'TourCtrl'
+    })
+    .state('index.documentary', {
+      url: '',
+      templateUrl: 'app/documentary.html',
+      controller: 'DocCtrl'
+    })
+    .state('index.corporate', {
+      url: '',
+      templateUrl: 'app/corporate.html',
+      controller: 'CorpCtrl'
+    })
+    .state('index.payment', {
+      url: '',
+      templateUrl: 'app/payment.html',
+      controller: 'PayCtrl'
     });
 }

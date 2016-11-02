@@ -1,4 +1,22 @@
 {
-  "DASHBOARD": "Panel",
-  "WELCOME": "Bienvenido/da"
+  "DASHBOARD": "Dashboard",
+  "WELCOME": "Welcome",
+  "TOURISMFILMS": "Tourism films",
+  "HAVEREGISTER": "You registered",
+  "DOCFILMS": "Documentary films",
+  "CORPFILMS": "Corporate films",
+  "PAYMENT": "Payment",
+  "FILL_INITIAL_INFO": "Films to add",
+  "FILM_TITLE": "Film title",
+  "SAVE": "Save",
+  "REGISTERED_FILMS": "Registered films",
+  "STILL_NOT_REGISTER": "You don't register any film in this section, Do you want to register anyone?",
+  "FILMS2REGISTER": "Number of films to register",
+  "ADD": "Add",
+  "PAYINFO": "Payment information",
+  "PAYAMOUNT": "Total amount",
+  "VAT": "VAT if applicable",
+  "PAYMENTPROOF": "Payment proof",
+  "PAYMENTSEND": "Payment send",
+  "PAYMENTSENDMSG": "When we confirm the payment, you could download the bill"
 }
