@@ -6,23 +6,8 @@ function AuthenticationSvc($http, $q, $window) {
   var userInfo;
 
   function logout() {
-    var deferred = $q.defer();
-
-    $http({
-      method: "POST",
-      url: "/api/logout",
-      headers: {
-        accessToken: userInfo.accessToken
-      }
-    }).then(function (result) {
-      userInfo = null;
-      $window.sessionStorage.userInfo = null;
-      deferred.resolve(result);
-    }, function (error) {
-      deferred.reject(error);
-    });
-
-    return deferred.promise;
+    $window.sessionStorage.userInfo = null;
+    $window.location.href = '/login';
   }
 
   function getUserInfo() {
@@ -30,6 +15,7 @@ function AuthenticationSvc($http, $q, $window) {
   }
 
   function init() {
+    console.log('init');
     if ($window.sessionStorage.userInfo) {
       userInfo = JSON.parse($window.sessionStorage.userInfo);
     }
