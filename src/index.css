@@ -35,5 +35,15 @@ ul {
   list-style: none
 }
 .img_form_switch{
-  max-height: 40px;
+  max-height: 20px;
+}
+.md-fab-mini{
+  width: 35px !important;
+  height: 30px !important;
+  line-height: normal !important;
+  background-color: #8cbacc !important;
+  color: white !important;
+}
+.card-film-add img{
+  max-height: 5rem;
 }

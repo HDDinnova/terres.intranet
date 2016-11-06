@@ -31,10 +31,11 @@
       <div>
         <md-list>
           <md-list-item class="md-2-line" flex="100" ng-repeat="film in filmsinfo">
+            <md-button ng-click="editFilm(film.id)" class="md-fab md-fab-mini" aria-label="edit"><ng-md-icon icon="mode_edit"></ng-md-icon></md-button>
             <h3 flex="50" ng-bind-html="film.title"></h3>
             <span flex="50">
-              <img src="img/terres-mini.png" alt="terres" ng-show="film.section == 1" />
-              <img src="img/terres-art-mini.png" alt="terres" ng-show="film.section == 2" />
+              <img src="img/terres-mini.png" alt="terres" ng-show="film.section == 1"  class="img_form_switch"/>
+              <img src="img/terres-art-mini.png" alt="terres" ng-show="film.section == 2"  class="img_form_switch"/>
             </span>
           </md-list-item>
         </md-list>

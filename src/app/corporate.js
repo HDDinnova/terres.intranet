@@ -24,7 +24,7 @@ function CorpCtrl($scope, $window, $http, $state) {
     });
   };
 
-  $http.post('api/corporate', user)
+  $http.post('api/corpfilm', user)
   .success(function (data) {
     if (data.corporate) {
       $scope.category = true;

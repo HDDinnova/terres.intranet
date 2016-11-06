@@ -6,6 +6,7 @@ function AuthenticationSvc($http, $q, $window) {
   var userInfo;
 
   function logout() {
+    console.log(logout);
     $window.sessionStorage.userInfo = null;
     $window.location.href = '/login';
   }
@@ -15,7 +16,6 @@ function AuthenticationSvc($http, $q, $window) {
   }
 
   function init() {
-    console.log('init');
     if ($window.sessionStorage.userInfo) {
       userInfo = JSON.parse($window.sessionStorage.userInfo);
     }

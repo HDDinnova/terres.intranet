@@ -24,6 +24,10 @@ function TourCtrl($scope, $window, $http, $state) {
     });
   };
 
+  $scope.editFilm = function (id) {
+    $state.go('index.filmtour', {id: id});
+  };
+
   $http.post('api/tourfilm', user)
   .success(function (data) {
     if (data.tourism) {

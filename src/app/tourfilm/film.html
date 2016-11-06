@@ -1,0 +1,137 @@
+<md-content layout="column" layout-padding layout-margin layout-fill layout-align="center center" ng-hide="isData">
+    <md-progress-circular md-diameter="70" ng-disabled="isData" class="md-warn"></md-progress-circular>
+</md-content>
+<md-content layout-padding layout-wrap ng-if="isData">
+  <form>
+    <h1><i>{{film.formdata.title}}</i></h1>
+    <div layout="row">
+      <md-input-container layout-fill>
+        <label translate>{{'FILM.TITLE'}}</label>
+        <input type="text" ng-model="film.formdata.title" ng-change="film.modified.title = true" required>
+      </md-input-container>
+    </div>
+    <div layout-gt-md="row fill" layout="column">
+      <div  layout-gt-sm="row" layout="column">
+        <md-input-container ng-if="!film.formdata.synopsi">
+          <small translate>{{'FILM.SYNOPSI'}}</small>
+          <input type="file" ng-model="film.formdata.synopsi" accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" base-sixty-four-input required ng-change="film.modified.synopsi = true" aria-label="Film synopsi">
+        </md-input-container>
+        <md-card ng-if="film.formdata.synopsi" class="md-image-no-fill card-film-add">
+          <md-card-title>{{'FILM.SYNOPSI' | translate}}</md-card-title>
+          <md-card-content layout-align="space-around">
+            <a href="data:{{film.formdata.synopsiType}};base64,{{film.formdata.synopsi}}" target="_blank"><img ng-src="img/pdf.png" alt="pdf icon" /></a>
+            <ng-md-icon icon="delete" size="20" style="fill: red" ng-click="del('synopsi')"></ng-md-icon>
+          </md-card-content>
+        </md-card>
+        <md-input-container ng-if="!film.formdata.short">
+          <small translate>{{'FILM.SHORT'}}</small>
+          <input type="file" ng-model="film.formdata.short" accept="application/pdf" base-sixty-four-input required ng-change="film.modified.short = true" aria-label="Short description">
+        </md-input-container>
+        <md-card ng-if="film.formdata.short" class="md-image-no-fill card-film-add">
+          <md-card-title>{{'FILM.SHORT' | translate}}</md-card-title>
+          <md-card-content layout-align="space-around">
+            <a href="data:{{film.formdata.shortType}};base64,{{film.formdata.short}}" target="_blank"><img ng-src="img/pdf.png" alt="pdf icon" /></a>
+            <ng-md-icon icon="delete" size="20" style="fill: red" ng-click="del('short')"></ng-md-icon>
+          </md-card-content>
+        </md-card>
+      </div>
+      <div layout-gt-sm="row" layout="column">
+        <md-input-container ng-if="!film.formdata.directorPhoto || film.modified.directorPhoto">
+          <small translate>{{'FILM.DIRPHOTO'}}</small>
+          <input type="file" ng-model="film.formdata.directorPhoto" accept="image/jpeg,image/gif,image/png" base-sixty-four-input required ng-change="film.modified.directorPhoto = true" aria-label="Director photo">
+        </md-input-container>
+        <md-card ng-if="film.formdata.directorPhoto && !film.modified.directorPhoto" class="md-image-no-fill card-film-add">
+          <md-card-title>{{'FILM.DIRPHOTO' | translate}}</md-card-title>
+          <md-card-content layout-align="space-around">
+            <img ng-src="data:{{film.formdata.directorPhotoType}};base64,{{film.formdata.directorPhoto}}" alt="director Photo" />
+            <ng-md-icon icon="delete" size="20" style="fill: red" ng-click="del('directorPhoto')"></ng-md-icon>
+          </md-card-content>
+        </md-card>
+        <md-input-container ng-if="!film.formdata.producerPhoto">
+          <small translate>{{'FILM.PROPHOTO'}}</small>
+          <input type="file" ng-model="film.formdata.producerPhoto" accept="image/jpeg,image/gif,image/png" base-sixty-four-input required ng-change="film.modified.producerPhoto = true" aria-label="Producer photo">
+        </md-input-container>
+        <md-card ng-if="film.formdata.producerPhoto" class="md-image-no-fill card-film-add">
+          <md-card-title>{{'FILM.PROPHOTO' | translate}}</md-card-title>
+          <md-card-content layout-align="space-around">
+            <img ng-src="data:{{film.formdata.producerPhotoType}};base64,{{film.formdata.producerPhoto}}" alt="director Photo" />
+            <ng-md-icon icon="delete" size="20" style="fill: red" ng-click="del('producerPhoto')"></ng-md-icon>
+          </md-card-content>
+        </md-card>
+      </div>
+    </div>
+    <div layout-gt-sm="row" layout="column">
+      <md-input-container ng-if="!film.formdata.screenshot1">
+        <small translate>{{'FILM.SCREENSHOT'}} 1</small>
+        <input type="file" ng-model="film.formdata.screenshot1" accept="image/jpeg,image/gif,image/png" base-sixty-four-input required ng-change="film.modified.screenshot1 = true" aria-label="Screenshot 1">
+      </md-input-container>
+      <md-card ng-if="film.formdata.screenshot1" class="md-image-no-fill card-film-add">
+        <md-card-title>{{'FILM.SCREENSHOT' | translate}} 1</md-card-title>
+        <md-card-content layout-align="space-around">
+          <img ng-src="data:{{film.formdata.screenshot1Type}};base64,{{film.formdata.screenshot1}}" alt="screenshot" />
+          <ng-md-icon icon="delete" size="20" style="fill: red" ng-click="del('screenshot1')"></ng-md-icon>
+        </md-card-content>
+      </md-card>
+      <md-input-container ng-if="!film.formdata.screenshot2">
+        <small translate>{{'FILM.SCREENSHOT'}} 2</small>
+        <input type="file" ng-model="film.formdata.screenshot2" accept="image/jpeg,image/gif,image/png" base-sixty-four-input required ng-change="film.modified.screenshot2 = true" aria-label="Screenshot 2">
+      </md-input-container>
+      <md-card ng-if="film.formdata.screenshot2" class="md-image-no-fill card-film-add">
+        <md-card-title>{{'FILM.SCREENSHOT' | translate}} 2</md-card-title>
+        <md-card-content layout-align="space-around">
+          <img ng-src="data:{{film.formdata.screenshot2Type}};base64,{{film.formdata.screenshot2}}" alt="screenshot" />
+          <ng-md-icon icon="delete" size="20" style="fill: red" ng-click="del('screenshot2')"></ng-md-icon>
+        </md-card-content>
+      </md-card>
+      <md-input-container ng-if="!film.formdata.screenshot3">
+        <small translate>{{'FILM.SCREENSHOT'}} 3</small>
+        <input type="file" ng-model="film.formdata.screenshot3" accept="image/jpeg,image/gif,image/png" base-sixty-four-input required ng-change="film.modified.screenshot3 = true" aria-label="Screenshot 3">
+      </md-input-container>
+      <md-card ng-if="film.formdata.screenshot3" class="md-image-no-fill card-film-add">
+        <md-card-title>{{'FILM.SCREENSHOT' | translate}} 3</md-card-title>
+        <md-card-content layout-align="space-around">
+          <img ng-src="data:{{film.formdata.screenshot3Type}};base64,{{film.formdata.screenshot3}}" alt="screenshot" />
+          <ng-md-icon icon="delete" size="20" style="fill: red" ng-click="del('screenshot3')"></ng-md-icon>
+        </md-card-content>
+      </md-card>
+    </div>
+    <div layout-gt-sm="row" layout="column">
+      <fieldset>
+        <legend translate>{{'FILM.CATEGORIES'}}</legend>
+        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.travel" aria-label="travel" ng-change="film.modified.travel = true">
+          {{'FILM.TRAVEL' | translate}}
+        </md-checkbox>
+        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.sports" aria-label="sports" ng-change="film.modified.sports = true">
+          {{'FILM.SPORTSTOUR' | translate}}
+        </md-checkbox>
+        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.expedition" aria-label="expedition" ng-change="film.modified.expedition = true">
+          {{'FILM.EXPEDITION' | translate}}
+        </md-checkbox>
+        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.hotels" aria-label="hotels" ng-change="film.modified.hotels = true">
+          {{'FILM.HOTELS' | translate}}
+        </md-checkbox>
+        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.events" aria-label="events" ng-change="film.modified.events = true">
+          {{'FILM.EVENTS' | translate}}
+        </md-checkbox>
+        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.health" aria-label="health" ng-change="film.modified.health = true">
+          {{'FILM.HEALTHTOUR' | translate}}
+        </md-checkbox>
+        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.rural" aria-label="rural" ng-change="film.modified.rural = true">
+          {{'FILM.RURAL' | translate}}
+        </md-checkbox>
+        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.enotourism" aria-label="Enotourism" ng-change="film.modified.enotourism = true">
+          {{'FILM.ENOTOURISM' | translate}}
+        </md-checkbox>
+        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.destinations" aria-label="Destinations" ng-change="film.modified.destinations = true">
+          {{'FILM.DESTINATIONS' | translate}}
+        </md-checkbox>
+        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.animation" aria-label="Animation" ng-change="film.modified.animation = true">
+          {{'FILM.ANIMATION' | translate}}
+        </md-checkbox>
+      </fieldset>
+    </div>
+    <md-input-container>
+      <md-button class="md-raised" aria-label="submit" ng-click="modifyFilm()" aria-label="submit">enviar</md-button>
+    </md-input-container>
+  </form>
+</md-content>

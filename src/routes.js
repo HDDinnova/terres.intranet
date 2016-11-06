@@ -47,5 +47,13 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '',
       templateUrl: 'app/payment.html',
       controller: 'PayCtrl'
+    })
+    .state('index.filmtour', {
+      url: '',
+      params: {
+        id: null
+      },
+      templateUrl: 'app/tourfilm/film.html',
+      controller: 'FilmTourCtrl'
     });
 }
