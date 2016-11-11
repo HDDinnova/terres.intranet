@@ -47,3 +47,17 @@ ul {
 .card-film-add img{
   max-height: 5rem;
 }
+md-card md-card-footer{
+  padding: 0 !important;
+}
+md-card-footer ng-md-icon{
+  cursor: pointer;
+}
+.videofilm{
+  width: 45%;
+  height: inherit;
+  margin-top: 1rem;
+}
+.md-button.md-fab[disabled]{
+  background-color: rgba(0,0,0,0.12) !important;
+}

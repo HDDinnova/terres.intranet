@@ -19,6 +19,7 @@
   "PAYMENTPROOF": "Justificante de pago",
   "PAYMENTSEND": "Pago enviado",
   "PAYMENTSENDMSG": "Cuando confirmemos el pago podras descargar tu factura",
+  "PAYMENTOK": "El pago ha sido verificado",
   "FILM": {
     "TITLE": "Título",
     "SYNOPSI": "Sinopsis",
@@ -27,6 +28,7 @@
     "PROPHOTO": "Foto del productor",
     "SCREENSHOT": "Fotograma",
     "CATEGORIES": "Categorias",
+    "MAX3": "(máximo 3)",
     "TRAVEL": "Destinos Turísticos",
     "SPORTSTOUR": "Deportes y Actividades al aire libre",
     "EXPEDITION": "Expediciones y Viajes",
@@ -54,5 +56,7 @@
     "ECOTOURISM": "Eco-turismo y viaje responsable",
     "SUSTAINABLE": "Producción sostenible y economía circular",
     "HEALTHCORP": "Salud y mejora de las condiciones ambientales"
-  }
+  },
+  "UPLOAD_VIDEO": "Subir video",
+  "SAVE": "GUARDAR CAMBIOS"
 }

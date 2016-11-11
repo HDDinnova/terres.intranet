@@ -1,7 +1,10 @@
-<md-content layout="column" layout-padding layout-margin layout-fill layout-align="center center" ng-hide="isData">
-    <md-progress-circular md-diameter="70" ng-disabled="isData" class="md-warn"></md-progress-circular>
+<md-content layout="column" >
+    <md-progress-circular md-diameter="70" ng-disabled="isData && !isUpload" class="md-warn"></md-progress-circular>
 </md-content>
 <md-content layout-padding layout-wrap ng-if="isData">
+  <div layout="column" layout-padding layout-margin layout-fill layout-align="center center" ng-hide="isData && !isUpload" class="loaddata">
+    <md-progress-circular md-diameter="70" ng-disabled="isData && !isUpload" class="md-warn"></md-progress-circular>
+  </div>
   <form>
     <h1><i>{{film.formdata.title}}</i></h1>
     <div layout="row">
@@ -20,8 +23,8 @@
           <md-card-title>{{'FILM.SYNOPSI' | translate}}</md-card-title>
           <md-card-content layout-align="space-around">
             <a href="data:{{film.formdata.synopsiType}};base64,{{film.formdata.synopsi}}" target="_blank"><img ng-src="img/pdf.png" alt="pdf icon" /></a>
-            <ng-md-icon icon="delete" size="20" style="fill: red" ng-click="del('synopsi')"></ng-md-icon>
           </md-card-content>
+          <md-card-footer layout="row" layout-align="end end"><ng-md-icon icon="delete" size="20" style="fill: red" ng-click="del('synopsi')"></ng-md-icon></md-card-footer>
         </md-card>
         <md-input-container ng-if="!film.formdata.short">
           <small translate>{{'FILM.SHORT'}}</small>
@@ -31,8 +34,8 @@
           <md-card-title>{{'FILM.SHORT' | translate}}</md-card-title>
           <md-card-content layout-align="space-around">
             <a href="data:{{film.formdata.shortType}};base64,{{film.formdata.short}}" target="_blank"><img ng-src="img/pdf.png" alt="pdf icon" /></a>
-            <ng-md-icon icon="delete" size="20" style="fill: red" ng-click="del('short')"></ng-md-icon>
           </md-card-content>
+          <md-card-footer layout="row" layout-align="end end"><ng-md-icon icon="delete" size="20" style="fill: red" ng-click="del('short')"></ng-md-icon></md-card-footer>
         </md-card>
       </div>
       <div layout-gt-sm="row" layout="column">
@@ -44,8 +47,8 @@
           <md-card-title>{{'FILM.DIRPHOTO' | translate}}</md-card-title>
           <md-card-content layout-align="space-around">
             <img ng-src="data:{{film.formdata.directorPhotoType}};base64,{{film.formdata.directorPhoto}}" alt="director Photo" />
-            <ng-md-icon icon="delete" size="20" style="fill: red" ng-click="del('directorPhoto')"></ng-md-icon>
           </md-card-content>
+          <md-card-footer layout="row" layout-align="end end"><ng-md-icon icon="delete" size="20" style="fill: red" ng-click="del('directorPhoto')"></ng-md-icon></md-card-footer>
         </md-card>
         <md-input-container ng-if="!film.formdata.producerPhoto">
           <small translate>{{'FILM.PROPHOTO'}}</small>
@@ -55,8 +58,8 @@
           <md-card-title>{{'FILM.PROPHOTO' | translate}}</md-card-title>
           <md-card-content layout-align="space-around">
             <img ng-src="data:{{film.formdata.producerPhotoType}};base64,{{film.formdata.producerPhoto}}" alt="director Photo" />
-            <ng-md-icon icon="delete" size="20" style="fill: red" ng-click="del('producerPhoto')"></ng-md-icon>
           </md-card-content>
+          <md-card-footer layout="row" layout-align="end end"><ng-md-icon icon="delete" size="20" style="fill: red" ng-click="del('producerPhoto')"></ng-md-icon></md-card-footer>
         </md-card>
       </div>
     </div>
@@ -69,8 +72,8 @@
         <md-card-title>{{'FILM.SCREENSHOT' | translate}} 1</md-card-title>
         <md-card-content layout-align="space-around">
           <img ng-src="data:{{film.formdata.screenshot1Type}};base64,{{film.formdata.screenshot1}}" alt="screenshot" />
-          <ng-md-icon icon="delete" size="20" style="fill: red" ng-click="del('screenshot1')"></ng-md-icon>
         </md-card-content>
+        <md-card-footer layout="row" layout-align="end end"><ng-md-icon icon="delete" size="20" style="fill: red" ng-click="del('screenshot1')"></ng-md-icon></md-card-footer>
       </md-card>
       <md-input-container ng-if="!film.formdata.screenshot2">
         <small translate>{{'FILM.SCREENSHOT'}} 2</small>
@@ -80,8 +83,8 @@
         <md-card-title>{{'FILM.SCREENSHOT' | translate}} 2</md-card-title>
         <md-card-content layout-align="space-around">
           <img ng-src="data:{{film.formdata.screenshot2Type}};base64,{{film.formdata.screenshot2}}" alt="screenshot" />
-          <ng-md-icon icon="delete" size="20" style="fill: red" ng-click="del('screenshot2')"></ng-md-icon>
         </md-card-content>
+        <md-card-footer layout="row" layout-align="end end"><ng-md-icon icon="delete" size="20" style="fill: red" ng-click="del('screenshot2')"></ng-md-icon></md-card-footer>
       </md-card>
       <md-input-container ng-if="!film.formdata.screenshot3">
         <small translate>{{'FILM.SCREENSHOT'}} 3</small>
@@ -91,13 +94,13 @@
         <md-card-title>{{'FILM.SCREENSHOT' | translate}} 3</md-card-title>
         <md-card-content layout-align="space-around">
           <img ng-src="data:{{film.formdata.screenshot3Type}};base64,{{film.formdata.screenshot3}}" alt="screenshot" />
-          <ng-md-icon icon="delete" size="20" style="fill: red" ng-click="del('screenshot3')"></ng-md-icon>
         </md-card-content>
+        <md-card-footer layout="row" layout-align="end end"><ng-md-icon icon="delete" size="20" style="fill: red" ng-click="del('screenshot3')"></ng-md-icon></md-cardfooter>
       </md-card>
     </div>
     <div layout-gt-sm="row" layout="column">
       <fieldset>
-        <legend translate>{{'FILM.CATEGORIES'}}</legend>
+        <legend>{{'FILM.CATEGORIES' | translate}} <small>{{'FILM.MAX3' | translate}}</small></legend>
         <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.travel" aria-label="travel" ng-change="film.modified.travel = true">
           {{'FILM.TRAVEL' | translate}}
         </md-checkbox>
@@ -130,8 +133,15 @@
         </md-checkbox>
       </fieldset>
     </div>
+    <div layout="row" layout-align="center" layout-fill ng-if="!film.formdata.film">
+      <h2 translate>{{'UPLOAD_VIDEO'}}</h2>
+      <md-button class="md-fab md-primary" aria-label="upload film"  accept="video/*" ngf-select="upload($file)"><ng-md-icon icon="movie"></md-button>
+    </div>
+    <div layout="row" layout-align="center" layout-fill ng-if="film.formdata.film">
+      <video ng-src="{{urlfilm}}" controls class="videofilm"></video>
+    </div>
     <md-input-container>
-      <md-button class="md-raised" aria-label="submit" ng-click="modifyFilm()" aria-label="submit">enviar</md-button>
+      <md-button class="md-raised md-warn" aria-label="submit" ng-click="modifyFilm()" aria-label="submit">{{'SAVE' | translate}}</md-button>
     </md-input-container>
   </form>
 </md-content>

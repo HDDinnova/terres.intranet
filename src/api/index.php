@@ -86,12 +86,13 @@ Flight::route('/tourfilm', function(){
     $mail = base64_decode($dades);
 
     /* GET GENERAL DATA */
-    $sql_dades = "SELECT id FROM competitors WHERE email = :email LIMIT 1";
+    $sql_dades = "SELECT id,payment FROM competitors WHERE email = :email LIMIT 1";
     $dades_user = $db->prepare($sql_dades);
     $dades_user->bindParam(':email', $mail);
     $dades_user->execute();
     $user = $dades_user->fetch(PDO::FETCH_ASSOC);
     $id = $user['id'];
+    $data['payment'] = $user['payment'];
 
     /* GET FILMS DATA */
     $sql_tourism = "SELECT id,nfilms FROM tourism WHERE user = :user LIMIT 1";
@@ -478,7 +479,7 @@ Flight::route('/paymentproof/@id', function($id){
 
     $pdfname = $_FILES['file']['name'];
     $pdftmp = $_FILES['file']['tmp_name'];
-    $url = "payproof/".$pdfname;
+    $url = $_SERVER['DOCUMENT_ROOT'].'/intranet/payproof/'.$pdfname;
 
     move_uploaded_file($pdftmp,$url);
     $sql_insert = "UPDATE competitors SET paymentproofname=:name, paymentproof=:proof WHERE id = :iduser";
@@ -558,5 +559,37 @@ Flight::route('/film/addtourism', function(){
 
   $db = NULL;
 });
+
+///////
+// Upload film
+///////
+Flight::route('/uploadFilm/@table/@id', function($table, $id) {
+  $db = Flight::db();
+  $data = [];
+
+  $name = $_FILES['file']['name'];
+  $tmp = $_FILES['file']['tmp_name'];
+  $url = $_SERVER['DOCUMENT_ROOT'].'/intranet/film/'.$name;
+  try {
+    move_uploaded_file($tmp,$url);
+  } catch (Exception $e) {
+    print_r($e);
+  }
+
+  $sql = "UPDATE $table SET film=:film WHERE id=:id";
+  $upload = $db->prepare($sql);
+  $upload->bindParam(':film', $name);
+  $upload->bindParam(':id', $id);
+
+  if ($upload->execute()) {
+    $data['status'] = 200;
+    $data['message'] = 'Film upload successfull';
+  }
+
+  Flight::json($data);
+
+  $db = NULL;
+});
+
 
 Flight::start();

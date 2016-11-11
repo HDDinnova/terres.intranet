@@ -19,6 +19,7 @@
   "PAYMENTPROOF": "Payment proof",
   "PAYMENTSEND": "Payment send",
   "PAYMENTSENDMSG": "When we confirm the payment, you could download the bill",
+  "PAYMENTOK": "Payment has been verified",
   "FILM": {
     "TITLE": "Title",
     "SYNOPSI": "Synopsi",
@@ -27,6 +28,7 @@
     "PROPHOTO": "Producer photo",
     "SCREENSHOT": "Screenshot",
     "CATEGORIES": "Categories",
+    "MAX3": "(max 3)",
     "TRAVEL": "Travel Destinations",
     "SPORTSTOUR": "Sports and Outdoors Activities",
     "EXPEDITION": "Expedition and Travel",
@@ -54,5 +56,7 @@
     "ECOTOURISM": "Eco-tourism and responsible travel",
     "SUSTAINABLE": "Sustainable production and circular economy",
     "HEALTHCORP": "Health and improvement of environmental conditions"
-  }
+  },
+  "UPLOAD_VIDEO": "Upload video",
+  "SAVE": "SAVE CHANGES"
 }

@@ -20,6 +20,11 @@ function PayCtrl($scope, $window, $http, Upload, $state) {
   $http.post('api/payment', user)
   .success(function (data) {
     $scope.paymentproof = data.userinfo.paymentproofname;
+    if (data.userinfo.payment === '1') {
+      $scope.payment = true;
+    } else {
+      $scope.payment = false;
+    }
     var corp;
     var corpfilms;
     var corpdate;

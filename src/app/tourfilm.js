@@ -43,6 +43,12 @@ function TourCtrl($scope, $window, $http, $state) {
         $scope.films = false;
       }
       $scope.idcat = data.tourism.id;
+      console.log(data);
+      if (data.payment === '0') {
+        $scope.payment = false;
+      } else {
+        $scope.payment = true;
+      }
     } else {
       $scope.category = false;
     }

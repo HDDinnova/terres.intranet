@@ -19,6 +19,7 @@
   "PAYMENTPROOF": "Justificant de pagament",
   "PAYMENTSEND": "Pagament enviat",
   "PAYMENTSENDMSG": "Quan confirmem el pagament podràs descarregar la factura",
+  "PAYMENTOK": "El pagament ha estat verificat",
   "FILM": {
     "TITLE": "Títol",
     "SYNOPSI": "Sinopsi",
@@ -27,6 +28,7 @@
     "PROPHOTO": "Foto del productor",
     "SCREENSHOT": "Fotograma",
     "CATEGORIES": "Categories",
+    "MAX3": "(màxim 3)",
     "TRAVEL": "Destins turístics",
     "SPORTSTOUR": "Esports i Activitats a l’aire lliure",
     "EXPEDITION": "Expedicions i viatges",
@@ -54,5 +56,7 @@
     "ECOTOURISM": "Eco-turisme i viatge responsable",
     "SUSTAINABLE": "Producció sostenible i economia circular",
     "HEALTHCORP": "Salut i millora de les condicions ambientals"
-  }
+  },
+  "UPLOAD_VIDEO": "Pujar video",
+  "SAVE": "GUARDAR CANVIS"
 }

@@ -7,7 +7,7 @@
         <h3>{{'PAYAMOUNT' | translate}}: <strong>{{amount * 1.21 | number: 2}}€</strong></h3>
       </md-card-content>
       <md-divider md-inset></md-divider>
-      <md-card ng-hide="paymentproof">
+      <md-card ng-if="!paymentproof">
         <md-card-content>
           <h2 translate>{{'PAYMENTPROOF'}}</h2>
           <md-input-container>
@@ -15,10 +15,15 @@
           </md-input-container>
         </md-card-content>
       </md-card>
-      <md-card ng-show="paymentproof">
+      <md-card ng-if="paymentproof && !payment">
         <md-card-content>
           <h2 translate>{{'PAYMENTSEND'}}</h2>
           <p translate>{{'PAYMENTSENDMSG'}}</p>
+        </md-card-content>
+      </md-card>
+      <md-card ng-if="payment">
+        <md-card-content>
+          <h2 translate>{{'PAYMENTOK'}}</h2>
         </md-card-content>
       </md-card>
 </md-content>

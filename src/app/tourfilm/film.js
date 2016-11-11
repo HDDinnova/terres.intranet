@@ -2,8 +2,9 @@ angular
   .module('app')
   .controller('FilmTourCtrl', FilmTourCtrl);
 
-function FilmTourCtrl($scope, $state, $stateParams, $http) {
+function FilmTourCtrl($scope, $state, $stateParams, $http, Upload) {
   $scope.isData = false;
+  $scope.isUpload = false;
   $scope.film = {};
   var edited = {};
   var modified = {
@@ -32,9 +33,11 @@ function FilmTourCtrl($scope, $state, $stateParams, $http) {
   .success(function (data) {
     $scope.film.formdata = data;
     $scope.isData = true;
+    $scope.urlfilm = 'film/' + $scope.film.formdata.film;
   });
 
   $scope.modifyFilm = function () {
+    $scope.isUpload = true;
     edited.id = $scope.film.formdata.id;
     angular.forEach($scope.film.modified, function (value, key) {
       if (value) {
@@ -48,9 +51,22 @@ function FilmTourCtrl($scope, $state, $stateParams, $http) {
       }
     });
   };
+
   $scope.del = function (field) {
     $scope.film.modified[field] = true;
     $scope.film.formdata[field] = "";
     $scope.modifyFilm();
+  };
+
+  $scope.upload = function (file) {
+    var url = 'api/uploadFilm/tourismfilms/' + $scope.film.formdata.id;
+    Upload.upload({
+      url: url,
+      data: {file: file}
+    }).then(function (data) {
+      if (data.status === 200) {
+        $state.reload();
+      }
+    });
   };
 }
