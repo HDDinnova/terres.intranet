@@ -101,34 +101,34 @@
     <div layout-gt-sm="row" layout="column">
       <fieldset>
         <legend>{{'FILM.CATEGORIES' | translate}} <small>{{'FILM.MAX3' | translate}}</small></legend>
-        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.travel" aria-label="travel" ng-change="film.modified.travel = true">
+        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.travel" aria-label="travel" ng-change="film.modified.travel = true && checkChanged(this)" ng-disabled="checked === max">
           {{'FILM.TRAVEL' | translate}}
         </md-checkbox>
-        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.sports" aria-label="sports" ng-change="film.modified.sports = true">
+        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.sports" aria-label="sports" ng-change="film.modified.sports = true && checkChanged(this)" ng-disabled="checked === max">
           {{'FILM.SPORTSTOUR' | translate}}
         </md-checkbox>
-        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.expedition" aria-label="expedition" ng-change="film.modified.expedition = true">
+        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.expedition" aria-label="expedition" ng-change="film.modified.expedition = true && checkChanged(this)" ng-disabled="checked === max">
           {{'FILM.EXPEDITION' | translate}}
         </md-checkbox>
-        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.hotels" aria-label="hotels" ng-change="film.modified.hotels = true">
+        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.hotels" aria-label="hotels" ng-change="film.modified.hotels = true && checkChanged(this)" ng-disabled="checked === max">
           {{'FILM.HOTELS' | translate}}
         </md-checkbox>
-        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.events" aria-label="events" ng-change="film.modified.events = true">
+        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.events" aria-label="events" ng-change="film.modified.events = true && checkChanged(this)" ng-disabled="checked === max">
           {{'FILM.EVENTS' | translate}}
         </md-checkbox>
-        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.health" aria-label="health" ng-change="film.modified.health = true">
+        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.health" aria-label="health" ng-change="film.modified.health = true && checkChanged(this)" ng-disabled="checked === max">
           {{'FILM.HEALTHTOUR' | translate}}
         </md-checkbox>
-        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.rural" aria-label="rural" ng-change="film.modified.rural = true">
+        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.rural" aria-label="rural" ng-change="film.modified.rural = true && checkChanged(this)" ng-disabled="checked === max">
           {{'FILM.RURAL' | translate}}
         </md-checkbox>
-        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.enotourism" aria-label="Enotourism" ng-change="film.modified.enotourism = true">
+        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.enotourism" aria-label="Enotourism" ng-change="film.modified.enotourism = true && checkChanged(this)" ng-disabled="checked === max">
           {{'FILM.ENOTOURISM' | translate}}
         </md-checkbox>
-        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.destinations" aria-label="Destinations" ng-change="film.modified.destinations = true">
+        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.destinations" aria-label="Destinations" ng-change="film.modified.destinations = true && checkChanged(this)" ng-disabled="checked === max">
           {{'FILM.DESTINATIONS' | translate}}
         </md-checkbox>
-        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.animation" aria-label="Animation" ng-change="film.modified.animation = true">
+        <md-checkbox md-no-ink ng-true-value="'1'" ng-false-value="'0'"  ng-model="film.formdata.animation" aria-label="Animation" ng-change="film.modified.animation = true && checkChanged(this)" ng-disabled="checked === max">
           {{'FILM.ANIMATION' | translate}}
         </md-checkbox>
       </fieldset>

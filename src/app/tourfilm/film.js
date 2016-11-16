@@ -3,9 +3,19 @@ angular
   .controller('FilmTourCtrl', FilmTourCtrl);
 
 function FilmTourCtrl($scope, $state, $stateParams, $http, Upload) {
+  $scope.max = 3;
+  $scope.checked = 0;
   $scope.isData = false;
   $scope.isUpload = false;
   $scope.film = {};
+  $scope.checkChanged = function (item) {
+    if (item) {
+      ++$scope.checked;
+    } else {
+      --$scope.checked;
+    }
+    console.log($scope.checked);
+  };
   var edited = {};
   var modified = {
     title: false,
