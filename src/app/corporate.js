@@ -24,6 +24,10 @@ function CorpCtrl($scope, $window, $http, $state) {
     });
   };
 
+  $scope.editFilm = function (id) {
+    $state.go('index.filmcorp', {id: id});
+  };
+
   $http.post('api/corpfilm', user)
   .success(function (data) {
     if (data.corporate) {
@@ -39,6 +43,11 @@ function CorpCtrl($scope, $window, $http, $state) {
         $scope.films = false;
       }
       $scope.idcat = data.corporate.id;
+      if (data.payment === '0') {
+        $scope.payment = false;
+      } else {
+        $scope.payment = true;
+      }
     } else {
       $scope.category = false;
     }

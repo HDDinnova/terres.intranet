@@ -24,6 +24,10 @@ function DocCtrl($scope, $window, $http, $state) {
     });
   };
 
+  $scope.editFilm = function (id) {
+    $state.go('index.filmdoc', {id: id});
+  };
+
   $http.post('api/docfilm', user)
   .success(function (data) {
     if (data.documentary) {
@@ -39,6 +43,11 @@ function DocCtrl($scope, $window, $http, $state) {
         $scope.films = false;
       }
       $scope.idcat = data.documentary.id;
+      if (data.payment === '0') {
+        $scope.payment = false;
+      } else {
+        $scope.payment = true;
+      }
     } else {
       $scope.category = false;
     }

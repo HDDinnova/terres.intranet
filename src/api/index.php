@@ -177,7 +177,7 @@ Flight::route('/docfilm', function(){
     $mail = base64_decode($dades);
 
     /* GET GENERAL DATA */
-    $sql_dades = "SELECT * FROM competitors WHERE email = :email LIMIT 1";
+    $sql_dades = "SELECT id,payment FROM competitors WHERE email = :email LIMIT 1";
     $dades_user = $db->prepare($sql_dades);
     $dades_user->bindParam(':email', $mail);
     $dades_user->execute();
@@ -185,7 +185,7 @@ Flight::route('/docfilm', function(){
     $id = $user['id'];
 
     /* GET FILMS DATA */
-    $sql_tourism = "SELECT * FROM documentary WHERE user = :user LIMIT 1";
+    $sql_tourism = "SELECT id,nfilms FROM documentary WHERE user = :user LIMIT 1";
     $dades_documentary = $db->prepare($sql_tourism);
     $dades_documentary->bindParam(':user', $id);
     $dades_documentary->execute();
@@ -195,7 +195,7 @@ Flight::route('/docfilm', function(){
       $documentary = $dades_documentary->fetch(PDO::FETCH_ASSOC);
       $data['documentary'] = $documentary;
       $idcat = $documentary['id'];
-      $sql_films = "SELECT * FROM documentaryfilms WHERE id_cat_user = :idcat";
+      $sql_films = "SELECT id, title, section FROM documentaryfilms WHERE id_cat_user = :idcat";
       $dades_films = $db->prepare($sql_films);
       $dades_films->bindParam(':idcat', $idcat);
       $dades_films->execute();
@@ -267,7 +267,7 @@ Flight::route('/corpfilm', function(){
     $mail = base64_decode($dades);
 
     /* GET GENERAL DATA */
-    $sql_dades = "SELECT * FROM competitors WHERE email = :email LIMIT 1";
+    $sql_dades = "SELECT id,payment FROM competitors WHERE email = :email LIMIT 1";
     $dades_user = $db->prepare($sql_dades);
     $dades_user->bindParam(':email', $mail);
     $dades_user->execute();
@@ -275,7 +275,7 @@ Flight::route('/corpfilm', function(){
     $id = $user['id'];
 
     /* GET FILMS DATA */
-    $sql_corporate = "SELECT * FROM corporate WHERE user = :user LIMIT 1";
+    $sql_corporate = "SELECT id,nfilms FROM corporate WHERE user = :user LIMIT 1";
     $dades_corporate = $db->prepare($sql_corporate);
     $dades_corporate->bindParam(':user', $id);
     $dades_corporate->execute();
@@ -285,7 +285,7 @@ Flight::route('/corpfilm', function(){
       $corporate = $dades_corporate->fetch(PDO::FETCH_ASSOC);
       $data['corporate'] = $corporate;
       $idcat = $corporate['id'];
-      $sql_films = "SELECT * FROM corporatefilms WHERE id_cat_user = :idcat";
+      $sql_films = "SELECT id, title, section FROM corporatefilms WHERE id_cat_user = :idcat";
       $dades_films = $db->prepare($sql_films);
       $dades_films->bindParam(':idcat', $idcat);
       $dades_films->execute();
@@ -511,7 +511,7 @@ Flight::route('/film/@table/@id', function($table, $id){
       $sql_dades = "SELECT * FROM documentaryfilms WHERE id = :id";
       break;
     case 'corporatefilms':
-      $sql_dades = "SELECT * FROM tourismfilms WHERE id = :id";
+      $sql_dades = "SELECT * FROM corporatefilms WHERE id = :id";
       break;
   }
   $dades = $db->prepare($sql_dades);
@@ -533,6 +533,8 @@ Flight::route('/film/addtourism', function(){
 
   $dades = file_get_contents('php://input');
   $dades = json_decode($dades, true);
+  $id = $dades['id'];
+  unset($dades['id']);
 
   $sql = "UPDATE tourismfilms SET";
   foreach ($dades as $key=>$value) {
@@ -549,7 +551,77 @@ Flight::route('/film/addtourism', function(){
   print_r($sql);
 
   $update = $db->prepare($sql);
-  $update->bindParam(':id', $dades['id']);
+  $update->bindParam(':id', $id);
+
+  if ($update->execute()) {
+    $data['status'] = 200;
+    $data['message'] = 'Update successfull';
+  }
+  Flight::json($data);
+
+  $db = NULL;
+});
+
+Flight::route('/film/addcorporate', function(){
+  $db = Flight::db();
+  $data = [];
+
+  $dades = file_get_contents('php://input');
+  $dades = json_decode($dades, true);
+  $id = $dades['id'];
+  unset($dades['id']);
+
+  $sql = "UPDATE corporatefilms SET";
+  foreach ($dades as $key=>$value) {
+    if ($key === 'synopsi' || $key === 'short' || $key === 'directorPhoto' || $key === 'producerPhoto' || $key === 'screenshot1' || $key === 'screenshot2' || $key === 'screenshot3') {
+      if (isset($value['base64'])){
+        $sql = $sql.' '.$key.'Type="'.$value['filetype'].'",';
+        $value = $value['base64'];
+      }
+    }
+    $sql = $sql.' '.$key.'="'.$value.'",';
+  }
+  $sql = rtrim($sql, ',');
+  $sql = $sql." WHERE id = :id";
+  print_r($sql);
+
+  $update = $db->prepare($sql);
+  $update->bindParam(':id', $id);
+
+  if ($update->execute()) {
+    $data['status'] = 200;
+    $data['message'] = 'Update successfull';
+  }
+  Flight::json($data);
+
+  $db = NULL;
+});
+
+Flight::route('/film/adddocumentary', function(){
+  $db = Flight::db();
+  $data = [];
+
+  $dades = file_get_contents('php://input');
+  $dades = json_decode($dades, true);
+  $id = $dades['id'];
+  unset($dades['id']);
+
+  $sql = "UPDATE documentaryfilms SET";
+  foreach ($dades as $key=>$value) {
+    if ($key === 'synopsi' || $key === 'short' || $key === 'directorPhoto' || $key === 'producerPhoto' || $key === 'screenshot1' || $key === 'screenshot2' || $key === 'screenshot3') {
+      if (isset($value['base64'])){
+        $sql = $sql.' '.$key.'Type="'.$value['filetype'].'",';
+        $value = $value['base64'];
+      }
+    }
+    $sql = $sql.' '.$key.'="'.$value.'",';
+  }
+  $sql = rtrim($sql, ',');
+  $sql = $sql." WHERE id = :id";
+  print_r($sql);
+
+  $update = $db->prepare($sql);
+  $update->bindParam(':id', $id);
 
   if ($update->execute()) {
     $data['status'] = 200;

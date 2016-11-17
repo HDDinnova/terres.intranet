@@ -55,5 +55,21 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       },
       templateUrl: 'app/tourfilm/film.html',
       controller: 'FilmTourCtrl'
+    })
+    .state('index.filmcorp', {
+      url: '',
+      params: {
+        id: null
+      },
+      templateUrl: 'app/corpfilm/film.html',
+      controller: 'FilmCorpCtrl'
+    })
+    .state('index.filmdoc', {
+      url: '',
+      params: {
+        id: null
+      },
+      templateUrl: 'app/docfilm/film.html',
+      controller: 'FilmDocCtrl'
     });
 }
