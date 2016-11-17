@@ -15,9 +15,9 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         auth: function ($q, AuthenticationSvc) {
           var userInfo = AuthenticationSvc.getUserInfo();
           if (userInfo) {
-            return $q.when(userInfo);
+            console.log(userInfo);
           } else {
-            return $q.reject({authenticated: false});
+            window.location = "http://terres.info/login";
           }
         }
       }
