@@ -7,23 +7,71 @@
         <h3>{{'PAYAMOUNT' | translate}}: <strong>{{amount * 1.21 | number: 2}}€</strong></h3>
       </md-card-content>
       <md-divider md-inset></md-divider>
-      <md-card ng-if="!paymentproof">
-        <md-card-content>
-          <h2 translate>{{'PAYMENTPROOF'}}</h2>
-          <md-input-container>
-            <md-button class="md-raised" aria-label="upload payment proof"  ngf-pattern=".pdf" ngf-select="upload($file)">Upload</md-button>
-          </md-input-container>
-        </md-card-content>
-      </md-card>
-      <md-card ng-if="paymentproof && !payment">
-        <md-card-content>
-          <h2 translate>{{'PAYMENTSEND'}}</h2>
-          <p translate>{{'PAYMENTSENDMSG'}}</p>
-        </md-card-content>
-      </md-card>
-      <md-card ng-if="payment">
-        <md-card-content>
-          <h2 translate>{{'PAYMENTOK'}}</h2>
-        </md-card-content>
-      </md-card>
+      <div layout="row">
+        <md-card ng-if="!paymentproof">
+          <md-card-content>
+            <h2 translate>{{'PAYPALPAYMENT'}}</h2>
+            <md-input-container id="paypalbutton">
+              <table border="0" cellpadding="10" cellspacing="0" align="center">
+                <tbody>
+                  <tr>
+                    <td align="center"></td>
+                  </tr>
+                  <tr>
+                    <td align="center">
+                      <a href="https://www.paypal.com/es/webapps/mpp/paypal-popup" title="Cómo funciona PayPal" onclick="javascript:window.open('https://www.paypal.com/es/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;">
+                        <img src="https://www.paypalobjects.com/webstatic/mktg/logo-center/logotipo_paypal_pagos_tarjetas.jpg" border="0" alt="Marcas de aceptación" />
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <paypal></paypal>
+            </md-input-container>
+          </md-card-content>
+        </md-card>
+        <md-card ng-if="!paymentproof">
+          <md-card-content>
+            <h2 translate>{{'PAYMENTPROOF'}}</h2>
+            <md-input-container>
+              <md-button class="md-raised" aria-label="upload payment proof"  ngf-pattern=".pdf" ngf-select="upload($file)">Upload</md-button>
+            </md-input-container>
+          </md-card-content>
+        </md-card>
+      </div>
+      <div layout="row">
+        <md-card ng-if="paymentproof && !payment">
+          <md-card-content>
+            <h2 translate>{{'PAYMENTSEND'}}</h2>
+            <p translate>{{'PAYMENTSENDMSG'}}</p>
+          </md-card-content>
+        </md-card>
+        <md-card ng-if="payment">
+          <md-card-content>
+            <h2 translate>{{'PAYMENTOK'}}</h2>
+          </md-card-content>
+        </md-card>
+      </div>
+      <div layout="row">
+        <md-card ng-if="!terreslab" class="dash-card">
+          <img class="md-card-image tl_mini" src="img/terresLAB_mini.png" alt="terres LAB logo">
+          <md-card-content>
+            <h2>{{'PAYMENT_TL' | translate}}</h2>
+            <div>
+              <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="hosted_button_id" value="36K4MWKVF4RK4">
+                <input type="image" src="https://www.paypalobjects.com/es_ES/ES/i/btn/btn_paynow_SM.gif" border="0" name="submit" alt="PayPal. La forma rápida y segura de pagar en Internet.">
+                <img alt="" border="0" src="https://www.paypalobjects.com/es_ES/i/scr/pixel.gif" width="1" height="1">
+              </form>
+            </div>
+          </md-card-content>
+        </md-card>
+        <md-card ng-if="terreslab" class="dash-card">
+          <img class="md-card-image" src="img/terresLAB_mini.png" alt="img">
+          <md-card-content>
+            <h2>{{'THANKYOU' | translate}}</h2>
+          </md-card-content>
+        </md-card>
+      </div>
 </md-content>

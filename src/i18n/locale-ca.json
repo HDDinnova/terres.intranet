@@ -16,16 +16,18 @@
   "PAYINFO": "Informació de pagament",
   "PAYAMOUNT": "Total a pagar",
   "VAT": "IVA si aplicable",
+  "PAYPALPAYMENT": "Pagar amb PayPal o amb targeta de crèdit",
   "PAYMENTPROOF": "Justificant de pagament",
   "PAYMENTSEND": "Pagament enviat",
   "PAYMENTSENDMSG": "Quan confirmem el pagament podràs descarregar la factura",
   "PAYMENTOK": "El pagament ha estat verificat",
+  "PAYMENT_TL": "Pagament per terres LAB",
   "FILM": {
     "TITLE": "Títol",
     "SYNOPSI": "Sinopsi",
     "SHORT": "Descripció director i productor",
-    "DIRPHOTO": "Foto del director",
-    "PROPHOTO": "Foto del productor",
+    "DIRPHOTO": "Director",
+    "PROPHOTO": "Productor",
     "SCREENSHOT": "Fotograma",
     "CATEGORIES": "Categories",
     "MAX3": "(màxim 3)",
@@ -38,7 +40,7 @@
     "HEALTHTOUR": "Turisme de Salut i Benestar",
     "RURAL": "Turisme Rural",
     "NATURAL": "Turisme de Natura",
-    "ENOTOURISM": "Experiències Gastronòmiques i Enoturisme",
+    "ENOTOURISM": "Experiències Gastronòmiques, Enoturisme i Oleoturisme",
     "DESTINATIONS": "Localitzacions per a la promoció de filmacions cinematogràfiques",
     "ANIMATION": "Animació",
     "SHORTFILM": "Curtmetratges",
@@ -60,5 +62,8 @@
     "HEALTHCORP": "Salut i millora de les condicions ambientals"
   },
   "UPLOAD_VIDEO": "Pujar video",
-  "SAVE": "GUARDAR CANVIS"
+  "SAVE": "GUARDAR CANVIS",
+  "THANKYOU": "Gràcies per inscriure't a terres LAB, Congrés sobre Paisatge, Turisme i Cinema.",
+  "PROGRAM": "Estem elaborant el programa de terres LAB. En breu, rebràs un correu electrònic amb el programa.",
+  "PARTNER": "Vols allotjar-te a l’hotel on tindrà lloc terres LAB beneficiant-te d’una oferta especial del nostre partner?"
 }

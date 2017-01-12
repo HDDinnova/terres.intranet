@@ -53,26 +53,12 @@
             <span flex></span>
             <md-menu>
                 <md-button aria-label="Open Settings" ng-click="layout.openMenu($mdOpenMenu, $event)">
-                    <ng-md-icon icon="account_circle"></ng-md-icon>
+                    <ng-md-icon icon="translate"></ng-md-icon>
                 </md-button>
-                <md-menu-content width="4">
-                    <md-menu-item>
-                        <md-button ng-click="layout.changeProfile($event)">
-                            <ng-md-icon icon="person"></ng-md-icon>
-                            Profile
-                        </md-button>
-                    </md-menu-item>
-                    <md-menu-item>
-                        <md-button ng-click="layout.changePassword()">
-                            <ng-md-icon icon="lock"></ng-md-icon>
-                            Password
-                        </md-button>
-                    </md-menu-item>
-                    <md-menu-divider></md-menu-divider>
-                    <md-menu-item>
-                        <md-button ng-click="layout.logOut()">
-                            <ng-md-icon icon="logout"></ng-md-icon>
-                            Logout
+                <md-menu-content width="3">
+                    <md-menu-item ng-repeat="idi in layout.langs">
+                        <md-button ng-click="layout.setLang(idi)">
+                            {{idi}}
                         </md-button>
                     </md-menu-item>
                 </md-menu-content>

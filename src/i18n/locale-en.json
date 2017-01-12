@@ -16,16 +16,18 @@
   "PAYINFO": "Payment information",
   "PAYAMOUNT": "Total amount",
   "VAT": "VAT if applicable",
+  "PAYPALPAYMENT": "Pay with PayPal or by credit card",
   "PAYMENTPROOF": "Payment proof",
   "PAYMENTSEND": "Payment send",
   "PAYMENTSENDMSG": "When we confirm the payment, you could download the bill",
   "PAYMENTOK": "Payment has been verified",
+  "PAYMENT_TL": "terres LAB payment",
   "FILM": {
     "TITLE": "Title",
     "SYNOPSI": "Synopsi",
     "SHORT": "Director and productor description",
-    "DIRPHOTO": "Director photo",
-    "PROPHOTO": "Producer photo",
+    "DIRPHOTO": "Director",
+    "PROPHOTO": "Producer",
     "SCREENSHOT": "Screenshot",
     "CATEGORIES": "Categories",
     "MAX3": "(max 3)",
@@ -38,7 +40,7 @@
     "HEALTHTOUR": "Health and Wellness Tourism",
     "RURAL": "Rural Tourism",
     "NATURAL": "Nature Tourism",
-    "ENOTOURISM": "Gastronomic experiences and Enotourism",
+    "ENOTOURISM": "Gastronomic experiences Enotourism & Oleotourism",
     "DESTINATIONS": "Promotion of locations for film shooting",
     "ANIMATION": "Animation",
     "SHORTFILM": "Short films",
@@ -60,5 +62,8 @@
     "HEALTHCORP": "Health and improvement of environmental conditions"
   },
   "UPLOAD_VIDEO": "Upload video",
-  "SAVE": "SAVE CHANGES"
+  "SAVE": "SAVE CHANGES",
+  "THANKYOU": "Thanks for registering to terres LAB, Congress on Landscape, Tourism and Cinema.",
+  "PROGRAM": "We are competing the program of terres LAB. Soon, you will receive an e-mail with the program.",
+  "PARTNER": "Do you want to book a room in the hotel where terres LAB will take place? Benefit of our partner’s discount code!"
 }

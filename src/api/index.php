@@ -31,7 +31,7 @@ Flight::route('/main', function(){
     $mail = base64_decode($dades);
 
     /* GET GENERAL DATA */
-    $sql_dades = "SELECT * FROM competitors WHERE email = :email LIMIT 1";
+    $sql_dades = "SELECT id,fullName,email FROM competitors WHERE email = :email LIMIT 1";
     $dades_user = $db->prepare($sql_dades);
     $dades_user->bindParam(':email', $mail);
     $dades_user->execute();
@@ -69,6 +69,8 @@ Flight::route('/main', function(){
       $corporate = $dades_corporate->fetch(PDO::FETCH_ASSOC);
       $data['corporate'] = $corporate;
     }
+
+    $data['status'] = 200;
 
     Flight::json($data);
 
@@ -391,7 +393,7 @@ Flight::route('/payment', function(){
     $mail = base64_decode($dades);
 
     /* GET GENERAL DATA */
-    $sql_dades = "SELECT * FROM competitors WHERE email = :email LIMIT 1";
+    $sql_dades = "SELECT id,payment,paymentproofname,terreslab FROM competitors WHERE email = :email LIMIT 1";
     $dades_user = $db->prepare($sql_dades);
     $dades_user->bindParam(':email', $mail);
     $dades_user->execute();
@@ -538,7 +540,7 @@ Flight::route('/film/addtourism', function(){
 
   $sql = "UPDATE tourismfilms SET";
   foreach ($dades as $key=>$value) {
-    if ($key === 'synopsi' || $key === 'short' || $key === 'directorPhoto' || $key === 'producerPhoto' || $key === 'screenshot1' || $key === 'screenshot2' || $key === 'screenshot3') {
+    if (key === 'screenshot1' || $key === 'screenshot2' || $key === 'screenshot3') {
       if (isset($value['base64'])){
         $sql = $sql.' '.$key.'Type="'.$value['filetype'].'",';
         $value = $value['base64'];
@@ -573,7 +575,7 @@ Flight::route('/film/addcorporate', function(){
 
   $sql = "UPDATE corporatefilms SET";
   foreach ($dades as $key=>$value) {
-    if ($key === 'synopsi' || $key === 'short' || $key === 'directorPhoto' || $key === 'producerPhoto' || $key === 'screenshot1' || $key === 'screenshot2' || $key === 'screenshot3') {
+    if ($key === 'screenshot1' || $key === 'screenshot2' || $key === 'screenshot3') {
       if (isset($value['base64'])){
         $sql = $sql.' '.$key.'Type="'.$value['filetype'].'",';
         $value = $value['base64'];
@@ -608,7 +610,7 @@ Flight::route('/film/adddocumentary', function(){
 
   $sql = "UPDATE documentaryfilms SET";
   foreach ($dades as $key=>$value) {
-    if ($key === 'synopsi' || $key === 'short' || $key === 'directorPhoto' || $key === 'producerPhoto' || $key === 'screenshot1' || $key === 'screenshot2' || $key === 'screenshot3') {
+    if ($key === 'screenshot1' || $key === 'screenshot2' || $key === 'screenshot3') {
       if (isset($value['base64'])){
         $sql = $sql.' '.$key.'Type="'.$value['filetype'].'",';
         $value = $value['base64'];
@@ -657,6 +659,43 @@ Flight::route('/uploadFilm/@table/@id', function($table, $id) {
     $data['status'] = 200;
     $data['message'] = 'Film upload successfull';
   }
+
+  Flight::json($data);
+
+  $db = NULL;
+});
+
+///////
+// Register competitor to terresLAB
+///////
+Flight::route('/tlpayment/@user', function($user) {
+  $db = Flight::db();
+  $data = [];
+
+  $user = base64_decode($user);
+
+  $sql = "SELECT fullName,address,zip,city,country,email FROM competitors WHERE email = :email LIMIT 1";
+  $dades_user = $db->prepare($sql);
+  $dades_user->bindParam(':email', $user);
+  $dades_user->execute();
+  $user = $dades_user->fetch(PDO::FETCH_ASSOC);
+
+  $sql = "INSERT INTO terreslab (nom, email, direccio, ciutat, pais, categoria) VALUES (:nom, :email, :direccio, :ciutat, :pais, 'concursant')";
+  $q = $db->prepare($sql);
+  $q->bindParam(':nom', $user['fullName']);
+  $q->bindParam(':email', $user['email']);
+  $q->bindParam(':direccio', $user['address']);
+  $q->bindParam(':ciutat', $user['city']);
+  $q->bindParam(':pais', $user['country']);
+  if ($q->execute()) {
+    $data['status'] = 200;
+    $data['message'] = 'User created successfully';
+  }
+
+  $sql = "UPDATE competitors SET terreslab = 1 WHERE email = :email";
+  $u = $db->prepare($sql);
+  $u->bindParam(':email', $user['email']);
+  $u->execute();
 
   Flight::json($data);
 

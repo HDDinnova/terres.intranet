@@ -61,3 +61,25 @@ md-card-footer ng-md-icon{
 .md-button.md-fab[disabled]{
   background-color: rgba(0,0,0,0.12) !important;
 }
+.tl_mini{
+  width: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.tl_pay{
+  height: 150px;
+  background-image: url(../img/Horta_MG_0011.jpg);
+  background-size: cover;
+  background-position: center bottom;
+}
+.tl_partner{
+  width: 100%;
+}
+.dash-card > img{
+  width: 40% !important;
+  padding-top: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

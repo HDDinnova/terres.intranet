@@ -19,7 +19,13 @@ function PayCtrl($scope, $window, $http, Upload, $state) {
 
   $http.post('api/payment', user)
   .success(function (data) {
+    console.log(data);
     $scope.paymentproof = data.userinfo.paymentproofname;
+    if (data.userinfo.terreslab === '1') {
+      $scope.terreslab = true;
+    } else {
+      $scope.terreslab = false;
+    }
     if (data.userinfo.payment === '1') {
       $scope.payment = true;
     } else {
@@ -154,5 +160,6 @@ function PayCtrl($scope, $window, $http, Upload, $state) {
     }
 
     $scope.amount = imp;
+    $scope.$broadcast("paypalAmount", $scope.amount);
   });
 }

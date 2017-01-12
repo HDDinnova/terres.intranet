@@ -29,27 +29,27 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       controllerAs: 'dash'
     })
     .state('index.tourfilm', {
-      url: '',
+      url: 'tourfilm',
       templateUrl: 'app/tourfilm.html',
       controller: 'TourCtrl'
     })
     .state('index.documentary', {
-      url: '',
+      url: 'documentary',
       templateUrl: 'app/documentary.html',
       controller: 'DocCtrl'
     })
     .state('index.corporate', {
-      url: '',
+      url: 'corporate',
       templateUrl: 'app/corporate.html',
       controller: 'CorpCtrl'
     })
     .state('index.payment', {
-      url: '',
+      url: 'payment',
       templateUrl: 'app/payment.html',
       controller: 'PayCtrl'
     })
     .state('index.filmtour', {
-      url: '',
+      url: 'tourfilm',
       params: {
         id: null
       },
@@ -57,7 +57,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       controller: 'FilmTourCtrl'
     })
     .state('index.filmcorp', {
-      url: '',
+      url: 'corporate',
       params: {
         id: null
       },
@@ -65,11 +65,20 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       controller: 'FilmCorpCtrl'
     })
     .state('index.filmdoc', {
-      url: '',
+      url: 'documentary',
       params: {
         id: null
       },
       templateUrl: 'app/docfilm/film.html',
       controller: 'FilmDocCtrl'
+    })
+    .state('index.tlpayok', {
+      url: 'terreslab/thankyou',
+      templateUrl: 'app/terreslab/pay.html',
+      controller: 'tlPayCtrl'
+    })
+    .state('index.tlpayerror', {
+      url: 'terreslab/error',
+      templateUrl: 'app/terreslab/error.html'
     });
 }

@@ -12,9 +12,8 @@ function FilmCorpCtrl($scope, $state, $stateParams, $http, Upload) {
     id: false,
     title: false,
     synopsi: false,
-    short: false,
-    directorPhoto: false,
-    producerPhoto: false,
+    director: false,
+    producer: false,
     screenshot1: false,
     screenshot2: false,
     screenshot3: false,
@@ -37,6 +36,7 @@ function FilmCorpCtrl($scope, $state, $stateParams, $http, Upload) {
         edited[key] = $scope.film.formdata[key];
       }
     });
+    console.log(edited);
     $http.post('api/film/addcorporate/', edited)
     .success(function (data) {
       if (data.status === 200) {
