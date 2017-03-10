@@ -152,7 +152,7 @@ Flight::route('/savetourfilm', function(){
       } else {
         $section = 1;
       }
-      $title = $dades['title'][$i];
+      addslashes($dades['title'][$i]);
       $sql = $sql."('$idcat','$section','$title')";
       if ($i < $nfilms-1) {
         $sql = $sql.', ';
@@ -242,7 +242,7 @@ Flight::route('/savedocfilm', function(){
       } else {
         $section = 1;
       }
-      $title = $dades['title'][$i];
+      $title = addslashes($dades['title'][$i]);
       $sql = $sql."('$idcat','$section','$title')";
       if ($i < $nfilms-1) {
         $sql = $sql.', ';
@@ -332,7 +332,7 @@ Flight::route('/savecorpfilm', function(){
       } else {
         $section = 1;
       }
-      $title = $dades['title'][$i];
+      addslashes($dades['title'][$i]);
       $sql = $sql."('$idcat','$section','$title')";
       if ($i < $nfilms-1) {
         $sql = $sql.', ';
